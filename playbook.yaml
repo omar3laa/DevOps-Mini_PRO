@@ -1,0 +1,12 @@
+- name: "Run Containers with Ansible Docker Modules"
+  hosts: localhost
+  connection: local
+  tasks:
+
+    - name: Down Docker compose
+      command: docker compose down -v
+      ignore_errors: yes
+
+    - name: up Docker compose
+      command: docker compose up --build
+      ignore_errors: yes
