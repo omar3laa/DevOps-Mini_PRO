@@ -29,13 +29,13 @@ def add():
         database='mydb'
     )
     c = conn.cursor()
-c.execute("""
-CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    email VARCHAR(100)
-)
-""")
+    c.execute("""
+    CREATE TABLE IF NOT EXISTS users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(100),
+        email VARCHAR(100)
+    )
+    """)
     c.execute("INSERT INTO users (name, email) VALUES (%s, %s)", (name, email))
     conn.commit()
     conn.close()
