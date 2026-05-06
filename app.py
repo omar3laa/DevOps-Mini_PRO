@@ -23,13 +23,13 @@ def add():
     email = request.form['email']
 
     conn = mysql.connector.connect(
-        host='mysql5744',
+        host='db',
         user='root',
         password='12345',
-        database='data'
+        database='mydb'
     )
     c = conn.cursor()
-    c.execute("INSERT INTO users (name, email) VALUES (?, ?)", (name, email))
+    c.execute("INSERT INTO users (name, email) VALUES (%s, %s)", (name, email))
     conn.commit()
     conn.close()
 
