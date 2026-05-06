@@ -29,6 +29,13 @@ def add():
         database='mydb'
     )
     c = conn.cursor()
+c.execute("""
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+)
+""")
     c.execute("INSERT INTO users (name, email) VALUES (%s, %s)", (name, email))
     conn.commit()
     conn.close()
@@ -38,10 +45,10 @@ def add():
 # عرض البيانات
 @app.route('/data')
 def data():
-    conn = mysql.connector.connect(host='mysql5744',
+    conn = mysql.connector.connect(host='db',
         user='root',
         password='12345',
-        database='data'
+        database='mydb'
     )
     c = conn.cursor()
     c.execute("SELECT * FROM users")
